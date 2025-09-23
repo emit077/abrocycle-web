@@ -23,7 +23,7 @@ git add -A
 git commit -m 'deploy in GitHub Pages'
 
 echo "Deploying to GitHub Pages..."
-git push -f git@github.com:emit077/abrocycle-web.github.io.git master:gh-pages
+git push -f git@github.com:emit077/abrocycle-web.github.io.git main:gh-pages
 
 # go back to project root
 cd -
