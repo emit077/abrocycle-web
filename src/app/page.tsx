@@ -5,6 +5,7 @@ import Footer from '@/components/layout/Footer';
 import HeroBanner from '@/components/HeroBanner';
 // import AboutSection from '@/components/sections/AboutSection';
 import FeaturesSection from '@/components/sections/FeaturesSection';
+import CatalogSection from '@/components/sections/CatalogSection';
 import ContactSection from '@/components/sections/ContactSection';
 
 export default function HomePage() {
@@ -21,6 +22,8 @@ export default function HomePage() {
 
       <main>
         <HeroBanner />
+        <CatalogSection />
+
         {/* <AboutSection /> */}
         <FeaturesSection />
         <ContactSection />

@@ -74,7 +74,7 @@ const AboutSection: React.FC = () => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <div className="inline-flex items-center px-4 py-2 bg-slate-100 rounded-full mb-6">
+                    <div className="inline-flex items-center px-4 py-2 bg-white rounded-full mb-6 shadow-sm border border-slate-200">
                         <span className="text-body-sm font-medium text-slate-700">About ABRO Cycles</span>
                     </div>
                     <h2 className="text-display-lg text-slate-900 mb-6">
