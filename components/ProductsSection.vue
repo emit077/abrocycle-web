@@ -52,6 +52,30 @@
             </div>
           </div>
         </div>
+
+        <!-- Call-to-Action Card -->
+        <div class="cta-card">
+          <div class="cta-content">
+            <h3 class="cta-title typography-section-title-light text-white">
+              Can't Find What You're Looking For?
+            </h3>
+            <p
+              class="cta-description typography-section-description text-white"
+            >
+              Our team can help you find the perfect cycle or create a custom
+              solution tailored to your specific needs and preferences.
+            </p>
+            <VBtn
+              class="cta-button typography-button-primary"
+              variant="flat"
+              color="white"
+              size="large"
+              @click="contactExperts"
+            >
+              Contact Our Experts
+            </VBtn>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -104,6 +128,11 @@ const buyNow = (productId) => {
   // Handle buy now action
   console.log(`Buying product ${productId}`);
   // You can implement actual purchase logic here
+};
+
+const contactExperts = () => {
+  // Navigate to contact page or open contact modal
+  navigateTo("/contact");
 };
 </script>
 
@@ -252,6 +281,78 @@ const buyNow = (productId) => {
   }
 }
 
+// Call-to-Action Card
+.cta-card {
+  background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(25, 118, 210, 0.3);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(25, 118, 210, 0.4);
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+    z-index: 1;
+  }
+
+  .cta-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 40px 30px;
+    max-width: 500px;
+
+    .cta-title {
+      margin-bottom: 16px;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .cta-description {
+      margin-bottom: 32px;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.6;
+    }
+
+    .cta-button {
+      background: white !important;
+      color: #1976d2 !important;
+      border-radius: 30px;
+      padding: 12px 32px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 16px rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+        background: rgba(255, 255, 255, 0.95) !important;
+      }
+    }
+  }
+}
+
 // Responsive adjustments
 @media (max-width: 768px) {
   .products-section {
@@ -322,6 +423,26 @@ const buyNow = (productId) => {
       padding: 6px 12px;
     }
   }
+
+  .cta-card {
+    min-height: 240px;
+
+    .cta-content {
+      padding: 30px 20px;
+
+      .cta-title {
+        margin-bottom: 12px;
+      }
+
+      .cta-description {
+        margin-bottom: 24px;
+      }
+
+      .cta-button {
+        padding: 10px 24px;
+      }
+    }
+  }
 }
 
 @media (max-width: 480px) {
@@ -384,6 +505,27 @@ const buyNow = (productId) => {
     .view-details-btn,
     .buy-now-btn {
       padding: 6px 10px;
+    }
+  }
+
+  .cta-card {
+    min-height: 200px;
+
+    .cta-content {
+      padding: 24px 16px;
+
+      .cta-title {
+        margin-bottom: 10px;
+      }
+
+      .cta-description {
+        margin-bottom: 20px;
+      }
+
+      .cta-button {
+        padding: 8px 20px;
+        font-size: 0.85rem;
+      }
     }
   }
 }

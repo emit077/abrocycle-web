@@ -8,12 +8,11 @@
       <!-- Mobile Hero Section -->
       <MobileHeroSection />
 
-      <!-- Features Section -->
-      <FeaturesSection />
-
       <!-- Products Section -->
       <ProductsSection />
 
+      <!-- Features Section -->
+      <FeaturesSection />
       <!-- Contact Section -->
       <ContactSection />
     </div>

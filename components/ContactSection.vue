@@ -10,10 +10,6 @@
     <div class="contact-container">
       <!-- Header Section -->
       <div class="contact-header">
-        <div class="header-badge">
-          <VIcon icon="mdi-phone-in-talk" size="20" color="yellow" />
-          <span>Contact Us</span>
-        </div>
         <h2 class="contact-title typography-section-title-light">
           GET IN TOUCH
         </h2>
@@ -164,30 +160,6 @@
               </div>
             </div>
           </div>
-        </div>
-
-        <!-- Quick Actions -->
-        <div class="quick-actions">
-          <VBtn
-            class="action-btn primary-action typography-button-primary"
-            variant="flat"
-            color="yellow"
-            size="x-large"
-            @click="navigateToContact"
-          >
-            <VIcon icon="mdi-phone" class="mr-2" size="20" />
-            CONTACT US NOW
-          </VBtn>
-          <VBtn
-            class="action-btn secondary-action typography-button-secondary"
-            variant="outlined"
-            color="primary"
-            size="x-large"
-            @click="navigateToProducts"
-          >
-            <VIcon icon="mdi-bike" class="mr-2" size="20" />
-            VIEW OUR BIKES
-          </VBtn>
         </div>
       </div>
     </div>
