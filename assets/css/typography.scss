@@ -1,0 +1,308 @@
+// ABRO Cycle Typography System
+// Centralized typography classes for consistent design
+
+// Font Families
+$font-primary: "Impact", Arial, sans-serif;
+$font-secondary: Arial, sans-serif;
+$font-roboto: Roboto, sans-serif;
+
+// Font Sizes
+$font-size-xs: 0.75rem;    // 12px
+$font-size-sm: 0.85rem;    // 13.6px
+$font-size-base: 1rem;     // 16px
+$font-size-lg: 1.1rem;     // 17.6px
+$font-size-xl: 1.2rem;     // 19.2px
+$font-size-2xl: 1.4rem;     // 22.4px
+$font-size-3xl: 1.6rem;     // 25.6px
+$font-size-4xl: 1.8rem;     // 28.8px
+$font-size-5xl: 2.2rem;     // 35.2px
+$font-size-6xl: 2.5rem;     // 40px
+$font-size-7xl: 3rem;       // 48px
+$font-size-8xl: 3.5rem;     // 56px
+
+// Font Weights
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extrabold: 800;
+
+// Letter Spacing
+$letter-spacing-tight: -1px;
+$letter-spacing-normal: 0;
+$letter-spacing-wide: 1px;
+
+// Line Heights
+$line-height-tight: 1.1;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.6;
+
+// Typography Classes
+
+// Headings
+.typography-hero-title {
+  font-family: $font-primary;
+  font-size: $font-size-8xl;
+  font-weight: $font-weight-extrabold;
+  line-height: $line-height-tight;
+  letter-spacing: $letter-spacing-tight;
+  color: #333;
+}
+
+.typography-hero-title-mobile {
+  font-family: $font-primary;
+  font-size: $font-size-5xl;
+  font-weight: $font-weight-extrabold;
+  line-height: $line-height-tight;
+  letter-spacing: $letter-spacing-tight;
+  color: #333;
+}
+
+.typography-section-title {
+  font-family: $font-primary;
+  font-size: $font-size-7xl;
+  font-weight: $font-weight-extrabold;
+  line-height: $line-height-tight;
+  letter-spacing: $letter-spacing-tight;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.typography-section-title-light {
+  font-family: $font-primary;
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-extrabold;
+  line-height: $line-height-tight;
+  letter-spacing: $letter-spacing-tight;
+  color: #333;
+  letter-spacing: $letter-spacing-wide;
+}
+
+.typography-subsection-title {
+  font-family: $font-roboto;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  letter-spacing: $letter-spacing-normal;
+  color: #333;
+}
+
+.typography-product-title {
+  font-family: $font-primary;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  letter-spacing: -0.5px;
+  color: #333;
+}
+
+.typography-feature-title {
+  font-family: $font-roboto;
+  font-size: $font-size-xl;
+  // font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  letter-spacing: $letter-spacing-normal;
+  color: white;
+}
+
+// Body Text
+.typography-hero-description {
+  font-size: $font-size-lg;
+  color: #666;
+  line-height: $line-height-relaxed;
+  font-weight: $font-weight-medium;
+}
+
+.typography-hero-description-mobile {
+  font-size: $font-size-base;
+  color: #666;
+  line-height: $line-height-normal;
+  font-weight: $font-weight-normal;
+}
+
+.typography-section-description {
+  font-size: $font-size-base;
+  color: #666;
+  line-height: $line-height-normal;
+  font-weight: $font-weight-normal;
+}
+
+.typography-product-description {
+  font-size: $font-size-sm;
+  color: #666;
+  line-height: $line-height-normal;
+  font-weight: $font-weight-normal;
+}
+
+.typography-feature-description {
+  font-size: $font-size-base;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: $line-height-normal;
+  font-weight: $font-weight-medium;
+}
+
+// Buttons
+.typography-button-primary {
+  font-weight: $font-weight-semibold;
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-wide;
+  font-size: $font-size-sm;
+}
+
+.typography-button-secondary {
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-wide;
+  font-size: $font-size-sm;
+}
+
+// Price
+.typography-price-amount {
+  font-family: $font-primary;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: #333;
+}
+
+.typography-price-label {
+  font-size: $font-size-xs;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-wide;
+  font-weight: $font-weight-normal;
+}
+
+// Badges and Labels
+.typography-badge {
+  font-weight: $font-weight-bold;
+  font-size: $font-size-xs;
+  letter-spacing: $letter-spacing-wide;
+  text-transform: uppercase;
+}
+
+.typography-feature-item {
+  font-size: $font-size-sm;
+  color: #555;
+  font-weight: $font-weight-medium;
+}
+
+// Responsive Typography
+
+// Mobile adjustments
+@media (max-width: 768px) {
+  .typography-hero-title {
+    font-size: $font-size-6xl;
+  }
+  
+  .typography-hero-title-mobile {
+    font-size: $font-size-4xl;
+  }
+  
+  .typography-section-title {
+    font-size: $font-size-5xl;
+  }
+  
+  .typography-section-title-light {
+    font-size: $font-size-2xl;
+  }
+  
+  .typography-subsection-title {
+    font-size: $font-size-xl;
+  }
+  
+  .typography-hero-description {
+    font-size: $font-size-base;
+  }
+  
+  .typography-hero-description-mobile {
+    font-size: $font-size-sm;
+  }
+  
+  .typography-section-description {
+    font-size: $font-size-sm;
+  }
+  
+  .typography-product-description {
+    font-size: $font-size-xs;
+  }
+  
+  .typography-feature-description {
+    font-size: $font-size-sm;
+  }
+  
+  .typography-product-title {
+    font-size: $font-size-lg;
+  }
+  
+  .typography-feature-title {
+    font-size: $font-size-xl;
+  }
+}
+
+// Small mobile adjustments
+@media (max-width: 480px) {
+  .typography-hero-title {
+    font-size: $font-size-5xl;
+  }
+  
+  .typography-hero-title-mobile {
+    font-size: $font-size-3xl;
+  }
+  
+  .typography-section-title {
+    font-size: $font-size-4xl;
+  }
+  
+  .typography-section-title-light {
+    font-size: $font-size-xl;
+  }
+  
+  .typography-subsection-title {
+    font-size: $font-size-lg;
+  }
+  
+  .typography-hero-description {
+    font-size: $font-size-sm;
+  }
+  
+  .typography-hero-description-mobile {
+    font-size: $font-size-xs;
+  }
+  
+  .typography-section-description {
+    font-size: $font-size-xs;
+  }
+  
+  .typography-product-description {
+    font-size: $font-size-xs;
+  }
+  
+  .typography-feature-description {
+    font-size: $font-size-xs;
+  }
+  
+  .typography-product-title {
+    font-size: $font-size-base;
+  }
+  
+  .typography-feature-title {
+    font-size: $font-size-lg;
+  }
+  
+  .typography-feature-item {
+    font-size: $font-size-xs;
+  }
+  
+  .typography-price-label {
+    font-size: 9px;
+  }
+  
+  .typography-price-amount {
+    font-size: $font-size-xl;
+  }
+  
+  .typography-button-primary,
+  .typography-button-secondary {
+    font-size: $font-size-xs;
+  }
+}
