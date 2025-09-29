@@ -635,6 +635,24 @@ const _inlineRuntimeConfig = {
       "/__nuxt_error": {
         "cache": false
       },
+      "/": {
+        "prerender": true,
+        "headers": {
+          "cache-control": "s-maxage=31536000"
+        }
+      },
+      "/products/**": {
+        "isr": true
+      },
+      "/api/**": {
+        "cors": true,
+        "headers": {
+          "access-control-allow-origin": "*",
+          "access-control-allow-methods": "*",
+          "access-control-allow-headers": "*",
+          "access-control-max-age": "0"
+        }
+      },
       "/_nuxt/builds/meta/**": {
         "headers": {
           "cache-control": "public, max-age=31536000, immutable"
@@ -1021,7 +1039,7 @@ const _b9ZzY3UgJR1XYGIHYSehCVFW1SEB0K66pcd_BWAbYc = (function(nitro) {
 
 const rootDir = "/Users/emit/projects/personal-project/abro-cycle-nuxt";
 
-const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"name":"description","content":"ABRO Cycle - Premium bicycles and cycling accessories in Haridwar, Uttarakhand, India"}],"link":[{"rel":"icon","type":"image/x-icon","href":"/favicon.ico"}],"style":[],"script":[],"noscript":[],"title":"ABRO Cycle - Premium Bicycles in Haridwar"};
+const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"name":"description","content":"Premium bicycles and cycling accessories in Haridwar, Uttarakhand, India. Quality bikes for every adventure with expert service and maintenance."},{"name":"keywords","content":"bicycles, bikes, cycling, Haridwar, Uttarakhand, premium bikes, cruiser cycles, mountain bikes, city bikes"},{"name":"author","content":"ABRO Cycle"},{"name":"robots","content":"index, follow"},{"property":"og:title","content":"ABRO Cycle - Premium Bicycles in Haridwar"},{"property":"og:description","content":"Premium bicycles and cycling accessories in Haridwar, Uttarakhand, India"},{"property":"og:image","content":"/abrocycle-web/images/hero-bg.png"},{"property":"og:url","content":"https://yourdomain.com"},{"property":"og:type","content":"website"},{"property":"og:site_name","content":"ABRO Cycle"},{"name":"twitter:card","content":"summary_large_image"},{"name":"twitter:title","content":"ABRO Cycle - Premium Bicycles"},{"name":"twitter:description","content":"Premium bicycles in Haridwar, Uttarakhand"},{"name":"twitter:image","content":"/abrocycle-web/images/hero-bg.png"}],"link":[{"rel":"icon","type":"image/x-icon","href":"/favicon.ico"},{"rel":"canonical","href":"https://yourdomain.com"},{"rel":"preconnect","href":"https://fonts.googleapis.com"},{"rel":"preconnect","href":"https://fonts.gstatic.com","crossorigin":""}],"style":[],"script":[],"noscript":[],"title":"ABRO Cycle - Premium Bicycles in Haridwar, Uttarakhand"};
 
 const appRootTag = "div";
 
@@ -1241,7 +1259,7 @@ function createSSRContext(event) {
     url: event.path,
     event,
     runtimeConfig: useRuntimeConfig(event),
-    noSSR: true,
+    noSSR: event.context.nuxt?.noSSR || (false),
     head: createHead(unheadOptions),
     error: false,
     nuxt: void 0,
@@ -1272,7 +1290,7 @@ function publicAssetsURL(...path) {
 
 const APP_ROOT_OPEN_TAG = `<${appRootTag}${propsToString(appRootAttrs)}>`;
 const APP_ROOT_CLOSE_TAG = `</${appRootTag}>`;
-const getServerEntry = () => Promise.resolve().then(function () { return server$1; }).then((r) => r.default || r);
+const getServerEntry = () => import('file:///Users/emit/projects/personal-project/abro-cycle-nuxt/.nuxt/dist/server/server.mjs').then((r) => r.default || r);
 const getClientManifest = () => import('file:///Users/emit/projects/personal-project/abro-cycle-nuxt/.nuxt/dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
 const getSSRRenderer = lazyCachedFunction(async () => {
   const manifest = await getClientManifest();
@@ -1341,7 +1359,7 @@ function lazyCachedFunction(fn) {
   };
 }
 function getRenderer(ssrContext) {
-  return getSPARenderer() ;
+  return ssrContext.noSSR ? getSPARenderer() : getSSRRenderer();
 }
 const getSSRStyles = lazyCachedFunction(() => Promise.resolve().then(function () { return styles$1; }).then((r) => r.default || r));
 
@@ -1753,7 +1771,7 @@ parentPort?.on("message", (msg) => {
   }
 });
 const nitroApp = useNitroApp();
-const server$2 = new Server(toNodeListener(nitroApp.h3App));
+const server = new Server(toNodeListener(nitroApp.h3App));
 let listener;
 listen().catch(() => listen(
   true
@@ -1793,8 +1811,8 @@ function listen(useRandomPort = Boolean(
 )) {
   return new Promise((resolve, reject) => {
     try {
-      listener = server$2.listen(useRandomPort ? 0 : getSocketAddress(), () => {
-        const address = server$2.address();
+      listener = server.listen(useRandomPort ? 0 : getSocketAddress(), () => {
+        const address = server.address();
         parentPort?.postMessage({
           event: "listen",
           address: typeof address === "string" ? { socketPath: address } : { host: "localhost", port: address?.port }
@@ -1820,7 +1838,7 @@ function getSocketAddress() {
   return join(tmpdir(), socketName);
 }
 async function shutdown() {
-  server$2.closeAllConnections?.();
+  server.closeAllConnections?.();
   await Promise.all([
     new Promise((resolve) => listener?.close(resolve)),
     nitroApp.hooks.callHook("close").catch(console.error)
@@ -1837,13 +1855,6 @@ const template$1 = (messages) => {
 const errorDev = /*#__PURE__*/Object.freeze({
   __proto__: null,
   template: template$1
-});
-
-const server = () => {};
-
-const server$1 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: server
 });
 
 const template = "";
@@ -1877,7 +1888,7 @@ function renderPayloadJsonScript(opts) {
     "type": "application/json",
     "innerHTML": contents,
     "data-nuxt-data": appId,
-    "data-ssr": false
+    "data-ssr": !(opts.ssrContext.noSSR)
   };
   {
     payload.id = "__NUXT_DATA__";
@@ -1935,7 +1946,7 @@ const renderer = defineRenderHandler(async (event) => {
   if (routeOptions.ssr === false) {
     ssrContext.noSSR = true;
   }
-  const renderer = await getRenderer();
+  const renderer = await getRenderer(ssrContext);
   const _rendered = await renderer.renderToString(ssrContext).catch(async (error) => {
     if (ssrContext._renderResponse && error.message === "skipping render") {
       return {};

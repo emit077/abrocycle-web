@@ -1,5 +1,5 @@
 // Import Typography System
-@import './typography.scss';
+@use './typography.scss' as *;
 
 // Font declarations
 @font-face {
